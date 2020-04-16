@@ -22,6 +22,10 @@ docker-run:
 	@echo "Running image ${NAME}:${GRPC_RELEASE} in container ${NAME}, then attaching to it"
 	docker run -it --entrypoint /bin/bash --name ${NAME} ${NAME}:${GRPC_RELEASE}
 
+docker-attach:
+	@echo "Attach to container ${NAME}"
+	docker exec -it ${NAME} /bin/bash
+
 docker-start: docker-build docker-run
 
 docker-restart: docker-reset docker-start
